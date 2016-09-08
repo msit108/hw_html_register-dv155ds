@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery Lab - Controls</title>
+<link rel="stylesheet"
+	href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+   
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="content">
+            <form method="post" action="http://jsapplab.site88.net/echo.php">
+                <div data-role="fieldcontain">
+                <label for="Username">帳號:</label> 
+				<input type="text"
+					name="Username" 
+                    id="Username" 
+                    value="" 
+                    placeholder="請輸入帳號" />
+                    </div>
+                
+			<div data-role="fieldcontain">
+				<label for="password">密碼:</label>
+				<input type="password" 
+                    name="password" 
+                    id="password" 
+                    value="" 
+                    placeholder="請輸入密碼"/>
+			</div>
+              
+                  <div data-role="fieldcontain">
+				<label for="repassword">密碼確認:</label>
+				<input type="password" 
+                    name="repassword" 
+                    id="repassword" 
+                    value="" 
+                    placeholder="請再次輸入密碼"/>
+			</div>
+
+                
+                 <div data-role="fieldcontain">
+				<label for="email">信箱:</label>
+				<input type="text" 
+                    name="email" 
+                    id="email" 
+                    value="" 
+                    placeholder="請輸入信箱"/>
+			</div>
+
+			<!--<div data-role="fieldcontain">
+				<label for="txtTextArea">Text area:</label>
+				<textarea name="txtTextArea" id="txtTextArea"></textarea>
+			</div>-->
+               
+			<!--<div data-role="fieldcontain">
+				<label for="rngScore">Input Range:</label>
+				<input type="range" name="rngScore" id="rngScore" value="60" min="0" max="100" />
+			</div>-->
+
+                <div  class="XD" >
+
+				<label for="gender">性別:</label>
+				<select   data-theme="a"   name="gender" id="gender" data-role="slider" >
+					<option value="Female">女 Female</option>
+					<option value="Male">男 Male</option>
+				
+                </select>
+
+                   
+
+			</div>
+             <style>
+        .XD .ui-slider-switch { 
+	    width: 10em 
+        }
+                 </style>
+			<!--<fieldset data-role="controlgroup">
+				<legend>Your hobby:</legend>
+				<label>
+                <input type="checkbox" name="chkReading" /> Reading </label>
+				<input type="checkbox" name="chkMusic"  id="chkMusic" />
+                <label for="chkMusic">Music</label>
+				<input type="checkbox" name="chkSport"  id="chkSport" />
+                <label for="chkSport">Sport</label>
+			</fieldset>-->
+             <!--   <div>-->
+                    
+		<!--	<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>Choose a pet:</legend>
+			     	<input type="radio" name="rdoPet" id="rdoPet0" value="0" checked="checked" />
+			     	<label for="rdoPet0">Cat</label>
+			
+			     	<input type="radio" name="rdoPet" id="rdoPet1" value="1"  />
+			     	<label for="rdoPet1">Dog</label>
+			
+			     	<input type="radio" name="rdoPet" id="rdoPet2" value="2"  />
+			     	<label for="rdoPet2">Hamster</label>
+			
+			     	<input type="radio" name="rdoPet" id="rdoPet3" value="3"  />
+			     	<label for="rdoPet3">Lizard</label>
+			</fieldset>-->
+
+
+<!--                </div>-->
+
+
+
+
+
+
+
+                <fieldset data-role="controlgroup" data-type="horizontal">
+				<label for="years">出生年月日:</label>
+                 <legend>出生年月日:</legend>
+				<select id="years" name="birthyears"></select>
+                <select id="months" name="birthmonths"></select>
+                <select id="days" name="birthdays"></select>
+
+
+                <script>
+     $(function () {
+
+        for (i = new Date().getFullYear() ; i > 1900; i--) {
+            $('#years').append($('<option />').val(i).html(i));
+        }
+
+        for (i = 1; i < 13; i++) {
+            $('#months').append($('<option />').val(i).html(i));
+        }
+        updateNumberOfDays();
+
+        $('#years, #months').change(function () {
+
+            updateNumberOfDays();
+
+        });
+
+    });
+
+    function updateNumberOfDays() {
+        $('#days').html('');
+        month = $('#months').val();
+        year = $('#years').val();
+        days = daysInMonth(month, year);
+
+        for (i = 1; i < days + 1 ; i++) {
+            $('#days').append($('<option />').val(i).html(i));
+        }
+
+    }
+
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
+    }
+</script>
+
+
+			</fieldset>
+
+                 <div class="ui-grid-a">
+				<div class="ui-block-a">
+                    <input type="submit" name="btnOK" value="OK" /></div>
+			<!--	<div class="ui-block-b"></div>-->
+                    <div class="ui-block-c">
+                    <input type="reset" name="btnCancel" value="清除" /></div>
+			</div>
+                
+
+	<!--		Data:
+                <input type="text" name="txt1" value="" placeholder="????????????????" />
+                <input type="submit" name="btn1" value="click here" />
+                <input type="submit" name="btnCancel" value="cancel" />
+                <input type="radio" name="ch1" id="ch1id1" /> 
+                <input type="radio" name="ch1" id="ch1id2" />                                                          
+                <input type="radio" name="ch1" id="ch1id3" />                                                          
+                <input type="radio" name="ch2" id="ch2id1" />                                                          
+                <input type="radio" name="ch2" id="ch2id2" />                                                          
+                <input type="radio" name="ch2" id="ch2id3" />                                                          
+                        
+    <script>
+        ch2id3.checked='checked' ;
+
+    </script>   -->                                              
+                  </form>
+		       
+        </div>
+		<!-- page content -->
+	</div>
+	<!-- page -->
+
+</body>
+</html>
